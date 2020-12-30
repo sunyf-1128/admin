@@ -1,0 +1,26 @@
+server:
+  port: 2020
+  servlet:
+    context-path: /yingx
+    jsp:
+      init-parameters:
+        development: true
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  datasource:
+    url:  jdbc:mysql://localhost:3306/yx
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+  http:
+
+mybatis:
+  type-aliases-package: com.baizhi.entity
+  mapper-locations: classpath:com/baizhi/mapper/*Mapper.xml
