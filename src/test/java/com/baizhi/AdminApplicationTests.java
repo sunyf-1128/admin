@@ -33,6 +33,7 @@ class AdminApplicationTests {
         user.setMobile("1231231");
         user.setUsername("sdfsdfsdf");
         user.setSex("man");
+        System.out.println(user);
         userService.addUser(user);
 
     }
