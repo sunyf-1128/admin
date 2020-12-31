@@ -1,16 +1,23 @@
 package com.baizhi.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import java.io.Serializable;
 import java.util.Date;
 
+@Document(indexName = "yx", type = "video")
 @Table(name = "ei_video")
-public class Video {
+public class Video implements Serializable {
+
+    @org.springframework.data.annotation.Id
     @Id
     private String id;
     @Column(name = "user_id")
@@ -20,8 +27,10 @@ public class Video {
 
     private String address;
 
+    @Field(type = FieldType.Text, analyzer = "ik_max_word")
     private String title;
 
+    @Field(type = FieldType.Text, analyzer = "ik_max_word")
     private String intro;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
